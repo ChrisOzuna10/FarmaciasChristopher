@@ -7,9 +7,14 @@
         <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
+<<<<<<< HEAD
     <option name="workspaceImportForciblyTurnedOn" value="true" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="temurin-11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
+=======
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="temurin-11" project-jdk-type="JavaSDK" />
+>>>>>>> 0677f9c4ed26138be848d14b6dae12b3e6e1cec4
 </project>
