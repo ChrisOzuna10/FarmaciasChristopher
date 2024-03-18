@@ -1,4 +1,4 @@
-package com.christopher.farmacia_christopher;
+package com.christopher.farmacia_christopher.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
