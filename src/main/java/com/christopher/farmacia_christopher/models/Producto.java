@@ -3,22 +3,19 @@ package com.christopher.farmacia_christopher.models;
 public class Producto {
     private String nombre;
     private double precio;
-    private int id;
+    private int idProducto;
     private int cantidad;
-    private int ultimoId = 0;
+    private static int ultimoId = 0;
 
     public Producto(String nombre, double precio, int cantidad) {
         this.nombre = nombre;
         this.precio = precio;
-        this.id = ++ultimoId;
+        this.idProducto = ++ultimoId;
         this.cantidad = cantidad;
     }
     public int restar (int cantidadRestar){
         this.cantidad=this.cantidad-cantidadRestar;
         return this.cantidad;
-    }
-    public void generarId (){
-        this.id = ++ultimoId;
     }
 
     public void setNombre(String nombre) {
@@ -41,8 +38,8 @@ public class Producto {
         return precio;
     }
 
-    public int getId() {
-        return id;
+    public int getIdProducto() {
+        return idProducto;
     }
 
     public int getCantidad() {

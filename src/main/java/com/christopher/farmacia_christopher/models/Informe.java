@@ -4,14 +4,14 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Informe {
-    private double totalVentas;
-    private LocalDateTime fecha=LocalDateTime.now();
+    private double totaInforme;
+    private LocalDateTime fechaInforme=LocalDateTime.now();
     private ArrayList<Ventas>listaInforme=new ArrayList<>();
 
     public void agregarInforme(Ventas venta){
         listaInforme.add(venta);
     }
-    public void mostrarVenta(Ventas venta){
+    public void mostrarInformeVenta(Ventas venta){
 
     }
 
