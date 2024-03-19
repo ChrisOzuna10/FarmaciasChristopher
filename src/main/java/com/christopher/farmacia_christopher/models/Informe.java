@@ -11,8 +11,27 @@ public class Informe {
     public void agregarInforme(Ventas venta){
         listaInforme.add(venta);
     }
-    public void mostrarInformeVenta(Ventas venta){
-
+    public double obtenerTotalInfome(){
+        for (Ventas ventas: listaInforme) {
+            this.totaInforme=this.totaInforme+ventas.getTotalVenta();
+        }
+        return this.totaInforme;
     }
 
+    public String mostrarInformeVentas() {
+        String imprimir = "Fecha del Informe: " + fechaInforme + "\n";
+        imprimir += "Total del Informe: " + totaInforme + "\n\n";
+        for (Ventas venta : listaInforme) {
+            imprimir += "ID de Venta: " + venta.getIdVenta() + "\n";
+            imprimir += "Productos vendidos:\n";
+            for (Producto producto : venta.getListaProductoVenta()) {
+                imprimir += "-Nombre: " + producto.getNombre() + "\n";
+                imprimir += "-Cantidad: " +producto.getCantidad()+"\n";
+                imprimir += "-precio: "+producto.getPrecio()+"\n";
+            }
+            imprimir += "Total de la Venta: " + venta.getTotalVenta() + "\n";
+            imprimir += "Fecha de la Venta: " + venta.getFechaVenta() + "\n\n";
+        }
+        return imprimir;
+    }
 }

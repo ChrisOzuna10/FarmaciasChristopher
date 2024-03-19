@@ -12,7 +12,7 @@ public class Ventas {
 
     public Ventas(ArrayList<Producto> listaProductoVenta) {
         this.listaProductoVenta = listaProductoVenta;
-        this.totalVenta =totalTodasLasVenta();
+        this.totalVenta = obtenerTotaldeVenta();
         this.fechaVenta =LocalDateTime.now() ;
         this.idVenta=++ultimoId;
     }
@@ -20,11 +20,32 @@ public class Ventas {
     public void agregarProductoVentas(Producto producto){
         listaProductoVenta.add(producto);
     }
-    public Double totalTodasLasVenta(){
+
+    public Double obtenerTotaldeVenta(){
         this.totalVenta=0;
         for (Producto producto:listaProductoVenta){
             this.totalVenta=this.totalVenta+producto.getPrecio();
         }
         return this.totalVenta;
+    }
+
+    public ArrayList<Producto> getListaProductoVenta() {
+        return listaProductoVenta;
+    }
+
+    public double getTotalVenta() {
+        return totalVenta;
+    }
+
+    public LocalDateTime getFechaVenta() {
+        return fechaVenta;
+    }
+
+    public int getIdVenta() {
+        return idVenta;
+    }
+
+    public static int getUltimoId() {
+        return ultimoId;
     }
 }

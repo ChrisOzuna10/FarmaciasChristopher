@@ -18,6 +18,16 @@ public class Producto {
         return this.cantidad;
     }
 
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "nombre='" + nombre + '\'' +
+                ", precio=" + precio +
+                ", idProducto=" + idProducto +
+                ", cantidad=" + cantidad +
+                '}';
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
