@@ -18,14 +18,19 @@ public class Empleado extends Usuario{
             }
         }
     }
-
-    /*public String buscarVenta(Ventas venta,int id){
+    public String buscarVenta(int id){
+        String imprimir="";
         for (Ventas actual:listaVentas){
-            if (venta.getIdVenta()==id) {
-
-
+            if (actual.getIdVenta()==id) {
+                imprimir= " id: "+actual.getIdVenta()+" fecha: "+actual.getFechaVenta()+" total: "+actual.getTotalVenta();
             }
         }
-    }*/
-    
+        return imprimir;
+    }
+
+    public void mostrarVentas(){
+
+    }
+
+
 }
