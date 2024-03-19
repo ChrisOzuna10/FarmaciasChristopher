@@ -7,4 +7,5 @@ public class Usuario {
     private String Contrasena;
     private ArrayList<Empleado>listaEmpleado=new ArrayList<>();
 
+
 }
