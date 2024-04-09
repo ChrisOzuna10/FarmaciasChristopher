@@ -60,10 +60,10 @@ public class InventarioControlador {
         }
     }
 
-    private void actualizarListaProductos() {
+    public void actualizarListaProductos() {
         ListaDeProductos.getItems().clear();
         for (Producto producto : farmacia.getInventario().getListaProductosInvent()) {
-            ListaDeProductos.getItems().add(producto.getNombre());
+            ListaDeProductos.getItems().add(producto.toString());
         }
     }
 

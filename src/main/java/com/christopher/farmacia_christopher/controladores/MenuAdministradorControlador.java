@@ -67,6 +67,7 @@ public class MenuAdministradorControlador {
         stage.show();
         InventarioControlador fxmlLoaderController = fxmlLoader.getController();
         fxmlLoaderController.setFarmacia(farmacia);
+        fxmlLoaderController.actualizarListaProductos();
     }
 
     public void SalirBoton(MouseEvent mouseEvent) throws IOException {
@@ -76,7 +77,6 @@ public class MenuAdministradorControlador {
         stage.setTitle("Inicio de sesion");
         stage.setScene(scene);
         stage.show();
-        Farmacia farmacia = new Farmacia();
         IniciarSesionController iniciarSesionController = fxmlLoader.getController();
         iniciarSesionController.setStage(stage);
         iniciarSesionController.setFarmacia(farmacia);
