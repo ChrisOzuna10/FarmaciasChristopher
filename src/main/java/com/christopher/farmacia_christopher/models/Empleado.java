@@ -36,9 +36,9 @@ public class Empleado extends Usuario{
         this.listaVentas = listaVentas;
     }
 
-    public void mostrarVentas(){
-
+    @Override
+    public String toString() {
+        return mombreUsuario +
+                ", Contraseña= " + Contrasena;
     }
-
-
 }

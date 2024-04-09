@@ -53,6 +53,7 @@ public class MenuAdministradorControlador {
         stage.show();
         InformesControlador fxmlLoaderController = fxmlLoader.getController();
         fxmlLoaderController.setFarmacia(farmacia);
+        fxmlLoaderController.mostrarInforme();
     }
 
     @FXML
@@ -75,7 +76,9 @@ public class MenuAdministradorControlador {
         stage.setTitle("Inicio de sesion");
         stage.setScene(scene);
         stage.show();
+        Farmacia farmacia = new Farmacia();
         IniciarSesionController iniciarSesionController = fxmlLoader.getController();
+        iniciarSesionController.setStage(stage);
         iniciarSesionController.setFarmacia(farmacia);
     }
 }

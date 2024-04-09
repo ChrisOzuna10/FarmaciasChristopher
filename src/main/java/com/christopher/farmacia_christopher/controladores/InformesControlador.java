@@ -53,7 +53,7 @@ public class InformesControlador {
     public void mostrarInforme (){
         for (Empleado empleado1 : farmacia.getListaEmpleado()){
             for (Ventas ventas: empleado1.getListaVentas()){
-
+                ListaDeProductos.getItems().add(ventas.toString());
             }
         }
 
