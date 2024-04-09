@@ -1,6 +1,6 @@
 package com.christopher.farmacia_christopher.models;
 
-import com.christopher.farmacia_christopher.controladores.Ventas;
+import com.christopher.farmacia_christopher.controladores.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

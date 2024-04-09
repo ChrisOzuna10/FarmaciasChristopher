@@ -7,12 +7,7 @@ public class Producto {
     private int cantidad;
     private static int ultimoId = 0;
 
-    public Producto(String nombre, double precio, int cantidad) {
-        this.nombre = nombre;
-        this.precio = precio;
-        this.idProducto = ++ultimoId;
-        this.cantidad = cantidad;
-    }
+
     public int restar (int cantidadRestar){
         this.cantidad=this.cantidad-cantidadRestar;
         return this.cantidad;

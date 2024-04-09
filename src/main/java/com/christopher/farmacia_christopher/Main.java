@@ -1,5 +1,7 @@
 package com.christopher.farmacia_christopher;
 
+import com.christopher.farmacia_christopher.controladores.IniciarSesionController;
+import com.christopher.farmacia_christopher.models.Farmacia;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,6 +17,10 @@ public class Main extends Application {
         stage.setTitle("Inicio de sesion");
         stage.setScene(scene);
         stage.show();
+        Farmacia farmacia = new Farmacia();
+        IniciarSesionController iniciarSesionController = fxmlLoader.getController();
+        iniciarSesionController.setStage(stage);
+        iniciarSesionController.setFarmacia(farmacia);
     }
 
     public static void main(String[] args) {

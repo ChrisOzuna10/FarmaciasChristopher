@@ -39,17 +39,32 @@ public class IniciarSesionController {
     }
     @FXML
     void iniciarSesionBoton(MouseEvent event) throws IOException {
-        if (correoTexto.getText().equals("administrador") && contraseñaTexto.getText().equals("contraseña")){
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("InicioSesion.fxml"));
+        if (correoTexto.getText().equals("administrador") && contraseñaTexto.getText().equals("1234")) {
+            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuAdministrador.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
-            stage.setTitle("Inicio de sesion");
+            stage.setTitle("Inicio de sesión");
             stage.setScene(scene);
             stage.show();
-            IniciarSesionController iniciarSesionController = fxmlLoader.getController();
-            iniciarSesionController.setFarmacia(farmacia);
+            MenuAdministradorControlador menuAdministradorControlador = fxmlLoader.getController();
+            menuAdministradorControlador.setFarmacia(farmacia);
         } else {
-            //Foreach para buscar a los empleados
-        }
+            if (farmacia.getListaEmpleado() != null) { // Verifica que la lista de empleados no sea null
+                for (Empleado empleado : farmacia.getListaEmpleado()) {
+                    if (empleado != null && empleado.getContrasena() != null && empleado.getMombreUsuario().equals(correoTexto.getText()) && empleado.getContrasena().equals(contraseñaTexto.getText())) {
+                        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuEmpleado.fxml"));
+                        Scene scene = new Scene(fxmlLoader.load());
+                        stage.setTitle("Inicio de sesión");
+                        stage.setScene(scene);
+                        stage.show();
+                        MenuEmpleadoControlador menuEmpleadoControlador = fxmlLoader.getController();
+                        menuEmpleadoControlador.setFarmacia(farmacia);
+                        menuEmpleadoControlador.setEmpleado(empleado);
+                        return; // Importante: salimos del bucle si encontramos un empleado válido
+                    }
+                }
+            }
+            // Si no se encuentra un empleado válido, aquí puedes mostrar un mensaje de error, por ejemplo:
+            System.out.println("Credenciales incorrectas");
     }
-
+}
 }

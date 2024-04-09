@@ -1,6 +1,6 @@
 package com.christopher.farmacia_christopher.models;
 
-import com.christopher.farmacia_christopher.controladores.Ventas;
+import com.christopher.farmacia_christopher.controladores.*;
 
 import java.util.ArrayList;
 
@@ -26,6 +26,14 @@ public class Empleado extends Usuario{
             }
         }
         return imprimir;
+    }
+
+    public ArrayList<Ventas> getListaVentas() {
+        return listaVentas;
+    }
+
+    public void setListaVentas(ArrayList<Ventas> listaVentas) {
+        this.listaVentas = listaVentas;
     }
 
     public void mostrarVentas(){

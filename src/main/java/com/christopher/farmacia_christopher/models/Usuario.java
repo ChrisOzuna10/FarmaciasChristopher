@@ -5,7 +5,20 @@ import java.util.ArrayList;
 public class Usuario {
     private String mombreUsuario;
     private String Contrasena;
-    private ArrayList<Empleado>listaEmpleado=new ArrayList<>();
 
+    public String getMombreUsuario() {
+        return mombreUsuario;
+    }
 
+    public void setMombreUsuario(String mombreUsuario) {
+        this.mombreUsuario = mombreUsuario;
+    }
+
+    public String getContrasena() {
+        return Contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        Contrasena = contrasena;
+    }
 }
