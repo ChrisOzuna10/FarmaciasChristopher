@@ -91,7 +91,6 @@ public class CrearVentaControlador {
 
     @FXML
     void ConfirmarVentaBoton(MouseEvent event) {
-
         double total=calcularTotal();
         Ventas ventas=new Ventas(auxListaProductos,total);
        // farmacia.getListaEmpleado().get().agregar(ventas);
