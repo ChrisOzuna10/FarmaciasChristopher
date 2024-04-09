@@ -5,6 +5,7 @@ import com.christopher.farmacia_christopher.models.Farmacia;
 import com.christopher.farmacia_christopher.models.Producto;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -63,7 +64,7 @@ public class InventarioControlador {
     public void actualizarListaProductos() {
         ListaDeProductos.getItems().clear();
         for (Producto producto : farmacia.getInventario().getListaProductosInvent()) {
-            ListaDeProductos.getItems().add(producto.toString());
+            ListaDeProductos.getItems().add(producto.getNombre() + ",Precio: " + producto.getPrecio());
         }
     }
 
@@ -85,11 +86,14 @@ public class InventarioControlador {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuAdministrador.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
-        stage.setTitle("Inicio de sesión");
+        stage.setTitle("Menu de administrador");
         stage.setScene(scene);
         stage.show();
         MenuAdministradorControlador menuAdministradorControlador = fxmlLoader.getController();
         menuAdministradorControlador.setFarmacia(farmacia);
+        Node source = (Node) event.getSource();
+        Stage stage1 = (Stage) source.getScene().getWindow();
+        stage1.close();
     }
 
     @FXML

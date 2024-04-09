@@ -5,6 +5,7 @@ import com.christopher.farmacia_christopher.models.Empleado;
 import com.christopher.farmacia_christopher.models.Farmacia;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -42,7 +43,7 @@ public class IniciarSesionController {
         if (correoTexto.getText().equals("administrador") && contraseñaTexto.getText().equals("1234")) {
             FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuAdministrador.fxml"));
             Scene scene = new Scene(fxmlLoader.load());
-            stage.setTitle("Inicio de sesión");
+            stage.setTitle("Menu de administrador");
             stage.setScene(scene);
             stage.show();
             MenuAdministradorControlador menuAdministradorControlador = fxmlLoader.getController();
@@ -53,12 +54,15 @@ public class IniciarSesionController {
                     if (empleado != null && empleado.getContrasena() != null && empleado.getMombreUsuario().equals(correoTexto.getText()) && empleado.getContrasena().equals(contraseñaTexto.getText())) {
                         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuEmpleado.fxml"));
                         Scene scene = new Scene(fxmlLoader.load());
-                        stage.setTitle("Inicio de sesión");
+                        stage.setTitle("Menu");
                         stage.setScene(scene);
                         stage.show();
                         MenuEmpleadoControlador menuEmpleadoControlador = fxmlLoader.getController();
                         menuEmpleadoControlador.setFarmacia(farmacia);
                         menuEmpleadoControlador.setEmpleado(empleado);
+                        Node source = (Node) event.getSource();
+                        Stage stage1 = (Stage) source.getScene().getWindow();
+                        stage1.close();
                         return; // Importante: salimos del bucle si encontramos un empleado válido
                     }
                 }

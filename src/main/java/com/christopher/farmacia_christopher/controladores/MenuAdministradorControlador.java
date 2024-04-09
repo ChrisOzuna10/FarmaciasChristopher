@@ -5,6 +5,7 @@ import com.christopher.farmacia_christopher.models.Empleado;
 import com.christopher.farmacia_christopher.models.Farmacia;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -40,6 +41,9 @@ public class MenuAdministradorControlador {
         stage.show();
         EmpleadosControlador fxmlLoaderController = fxmlLoader.getController();
         fxmlLoaderController.setFarmacia(farmacia);
+        Node source = (Node) event.getSource();
+        Stage stage1 = (Stage) source.getScene().getWindow();
+        stage1.close();
     }
 
     @FXML
@@ -48,12 +52,15 @@ public class MenuAdministradorControlador {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Informes.fxml"));
         Pane root = fxmlLoader.load();
         Scene scene = new Scene(root);
-        stage.setTitle("Agregando usuario");
+        stage.setTitle("Informe");
         stage.setScene(scene);
         stage.show();
         InformesControlador fxmlLoaderController = fxmlLoader.getController();
         fxmlLoaderController.setFarmacia(farmacia);
         fxmlLoaderController.mostrarInforme();
+        Node source = (Node) event.getSource();
+        Stage stage1 = (Stage) source.getScene().getWindow();
+        stage1.close();
     }
 
     @FXML
@@ -62,12 +69,15 @@ public class MenuAdministradorControlador {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Inventario.fxml"));
         Pane root = fxmlLoader.load();
         Scene scene = new Scene(root);
-        stage.setTitle("Agregando usuario");
+        stage.setTitle("Inventario");
         stage.setScene(scene);
         stage.show();
         InventarioControlador fxmlLoaderController = fxmlLoader.getController();
         fxmlLoaderController.setFarmacia(farmacia);
         fxmlLoaderController.actualizarListaProductos();
+        Node source = (Node) event.getSource();
+        Stage stage1 = (Stage) source.getScene().getWindow();
+        stage1.close();
     }
 
     public void SalirBoton(MouseEvent mouseEvent) throws IOException {
@@ -80,5 +90,8 @@ public class MenuAdministradorControlador {
         IniciarSesionController iniciarSesionController = fxmlLoader.getController();
         iniciarSesionController.setStage(stage);
         iniciarSesionController.setFarmacia(farmacia);
+        Node source = (Node) mouseEvent.getSource();
+        Stage stage1 = (Stage) source.getScene().getWindow();
+        stage1.close();
     }
 }

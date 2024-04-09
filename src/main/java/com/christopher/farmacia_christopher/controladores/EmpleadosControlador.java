@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ListView;
@@ -118,11 +119,14 @@ public class EmpleadosControlador {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuAdministrador.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
-        stage.setTitle("Inicio de sesión");
+        stage.setTitle("Menu de administrador");
         stage.setScene(scene);
         stage.show();
         MenuAdministradorControlador menuAdministradorControlador = fxmlLoader.getController();
         menuAdministradorControlador.setFarmacia(farmacia);
+        Node source = (Node) event.getSource();
+        Stage stage1 = (Stage) source.getScene().getWindow();
+        stage1.close();
     }
 
     private void actualizarListaEmpleados() {

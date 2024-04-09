@@ -7,6 +7,7 @@ import com.christopher.farmacia_christopher.models.Producto;
 import com.christopher.farmacia_christopher.models.Ventas;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -90,10 +91,29 @@ public class CrearVentaControlador {
     }
 
     @FXML
-    void ConfirmarVentaBoton(MouseEvent event) {
+    void ConfirmarVentaBoton(MouseEvent event) throws IOException {
         double total=calcularTotal();
-        Ventas ventas=new Ventas(auxListaProductos,total);
-       // farmacia.getListaEmpleado().get().agregar(ventas);
+        Ventas ventas = new Ventas(auxListaProductos,total);
+        empleado.añadirVenta(ventas);
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuEmpleado.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        Stage stage = new Stage();
+        stage.setTitle("Menu");
+        stage.setScene(scene);
+        stage.show();
+        MenuEmpleadoControlador fxmlLoaderController = fxmlLoader.getController();
+        int auxiliarDeAyuda = 0;
+        for (Empleado empleado1: farmacia.getListaEmpleado()){
+            if (empleado1.getMombreUsuario().equals(empleado.getMombreUsuario())&&empleado1.getContrasena().equals(empleado.getContrasena())){
+                farmacia.getListaEmpleado().set(auxiliarDeAyuda,empleado);
+            }
+            auxiliarDeAyuda++;
+        }
+        fxmlLoaderController.setFarmacia(farmacia);
+        fxmlLoaderController.setEmpleado(empleado);
+        Node source = (Node) event.getSource();
+        Stage stage1 = (Stage) source.getScene().getWindow();
+        stage1.close();
     }
 
     @FXML
@@ -138,11 +158,10 @@ public class CrearVentaControlador {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MenuEmpleado.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         Stage stage = new Stage();
-        stage.setTitle("Inicio de sesion");
+        stage.setTitle("Menu");
         stage.setScene(scene);
         stage.show();
-        IniciarSesionController iniciarSesionController = fxmlLoader.getController();
-        iniciarSesionController.setFarmacia(farmacia);
+        MenuEmpleadoControlador fxmlLoaderController = fxmlLoader.getController();
         int auxiliarDeAyuda = 0;
         for (Empleado empleado1: farmacia.getListaEmpleado()){
             if (empleado1.getMombreUsuario().equals(empleado.getMombreUsuario())&&empleado1.getContrasena().equals(empleado.getContrasena())){
@@ -150,6 +169,11 @@ public class CrearVentaControlador {
             }
             auxiliarDeAyuda++;
         }
+        fxmlLoaderController.setFarmacia(farmacia);
+        fxmlLoaderController.setEmpleado(empleado);
+        Node source = (Node) event.getSource();
+        Stage stage1 = (Stage) source.getScene().getWindow();
+        stage1.close();
     }
 
     @FXML

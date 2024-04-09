@@ -5,6 +5,7 @@ import com.christopher.farmacia_christopher.models.Empleado;
 import com.christopher.farmacia_christopher.models.Farmacia;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -35,11 +36,15 @@ public class MenuEmpleadoControlador {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("CancelarVenta.fxml"));
         Pane root = fxmlLoader.load();
         Scene scene = new Scene(root);
-        stage.setTitle("Agregando usuario");
+        stage.setTitle("Cancelar venta");
         stage.setScene(scene);
         stage.show();
         CancelarVentaControlador cancelarVentaControlador = fxmlLoader.getController();
         cancelarVentaControlador.setFarmacia(farmacia);
+        cancelarVentaControlador.setEmpleado(empleado);
+        Node source = (Node) event.getSource();
+        Stage stage1 = (Stage) source.getScene().getWindow();
+        stage1.close();
     }
 
     @FXML
@@ -48,24 +53,33 @@ public class MenuEmpleadoControlador {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("CrearVenta.fxml"));
         Pane root = fxmlLoader.load();
         Scene scene = new Scene(root);
-        stage.setTitle("Agregando usuario");
+        stage.setTitle("Crear venta");
         stage.setScene(scene);
         stage.show();
         CrearVentaControlador fxmlLoaderController = fxmlLoader.getController();
         fxmlLoaderController.setFarmacia(farmacia);
+        fxmlLoaderController.setEmpleado(empleado);
+        Node source = (Node) event.getSource();
+        Stage stage1 = (Stage) source.getScene().getWindow();
+        stage1.close();
     }
 
     @FXML
     void MotrarVentasBoton(MouseEvent event) throws IOException {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Informes.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MostrarVentas.fxml"));
         Pane root = fxmlLoader.load();
         Scene scene = new Scene(root);
-        stage.setTitle("Agregando usuario");
+        stage.setTitle("Ventas realizadas");
         stage.setScene(scene);
         stage.show();
-        InformesControlador fxmlLoaderController = fxmlLoader.getController();
+        MostrarVentasControlador fxmlLoaderController = fxmlLoader.getController();
         fxmlLoaderController.setFarmacia(farmacia);
+        fxmlLoaderController.setEmpleado(empleado);
+        fxmlLoaderController.mostrarVentas();
+        Node source = (Node) event.getSource();
+        Stage stage1 = (Stage) source.getScene().getWindow();
+        stage1.close();
     }
 
     @FXML
@@ -77,14 +91,18 @@ public class MenuEmpleadoControlador {
         stage.setScene(scene);
         stage.show();
         IniciarSesionController iniciarSesionController = fxmlLoader.getController();
-        iniciarSesionController.setFarmacia(farmacia);
+        iniciarSesionController.setStage(stage);
         int auxiliarDeAyuda = 0;
         for (Empleado empleado1: farmacia.getListaEmpleado()){
             if (empleado1.getMombreUsuario().equals(empleado.getMombreUsuario())&&empleado1.getContrasena().equals(empleado.getContrasena())){
-               farmacia.getListaEmpleado().set(auxiliarDeAyuda,empleado);
+                farmacia.getListaEmpleado().set(auxiliarDeAyuda,empleado);
             }
             auxiliarDeAyuda++;
         }
+        iniciarSesionController.setFarmacia(farmacia);
+        Node source = (Node) event.getSource();
+        Stage stage1 = (Stage) source.getScene().getWindow();
+        stage1.close();
     }
 
    

@@ -36,6 +36,10 @@ public class Empleado extends Usuario{
         this.listaVentas = listaVentas;
     }
 
+    public void añadirVenta(Ventas ventas){
+        listaVentas.add(ventas);
+    }
+
     @Override
     public String toString() {
         return mombreUsuario +

@@ -15,7 +15,7 @@
             <Image url="@imagenes/logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="110.0" layoutY="29.0" prefHeight="59.0" prefWidth="430.0" style="-fx-background-color: #002d3d; -fx-background-radius: 10;" text=" Lista de ventas" textFill="#d9bbbb">
+      <Label layoutX="110.0" layoutY="29.0" prefHeight="59.0" prefWidth="430.0" style="-fx-background-color: #002d3d; -fx-background-radius: 10;" text="Lista de ventas" textFill="#d9bbbb">
          <font>
             <Font size="41.0" />
          </font>

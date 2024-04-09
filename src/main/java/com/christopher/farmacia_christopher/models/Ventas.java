@@ -48,4 +48,18 @@ public class Ventas {
     public static int getUltimoId() {
         return ultimoId;
     }
+
+    @Override
+    public String toString() {
+    String listaProductos = "";
+    for (Producto producto: listaProductoVenta){
+        listaProductos = listaProductos + producto.toString();
+    }
+        return "Ventas{" +
+                "listaProductoVenta=" + listaProductos +
+                ", totalVenta=" + totalVenta +
+                ", fechaVenta=" + fechaVenta +
+                ", idVenta=" + idVenta +
+                '}';
+    }
 }
