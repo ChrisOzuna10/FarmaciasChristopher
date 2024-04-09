@@ -40,6 +40,7 @@ public class MenuEmpleadoControlador {
         stage.show();
         CancelarVentaControlador cancelarVentaControlador = fxmlLoader.getController();
         cancelarVentaControlador.setFarmacia(farmacia);
+        cancelarVentaControlador.setEmpleado(empleado);
     }
 
     @FXML
@@ -58,14 +59,16 @@ public class MenuEmpleadoControlador {
     @FXML
     void MotrarVentasBoton(MouseEvent event) throws IOException {
         Stage stage = new Stage();
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Informes.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("MostrarVentas.fxml"));
         Pane root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setTitle("Agregando usuario");
         stage.setScene(scene);
         stage.show();
-        InformesControlador fxmlLoaderController = fxmlLoader.getController();
+        MostrarVentasControlador fxmlLoaderController = fxmlLoader.getController();
         fxmlLoaderController.setFarmacia(farmacia);
+        fxmlLoaderController.setEmpleado(empleado);
+        fxmlLoaderController.mostrarVentas();
     }
 
     @FXML
@@ -77,14 +80,16 @@ public class MenuEmpleadoControlador {
         stage.setScene(scene);
         stage.show();
         IniciarSesionController iniciarSesionController = fxmlLoader.getController();
+        iniciarSesionController.setStage(stage);
         iniciarSesionController.setFarmacia(farmacia);
         int auxiliarDeAyuda = 0;
         for (Empleado empleado1: farmacia.getListaEmpleado()){
             if (empleado1.getMombreUsuario().equals(empleado.getMombreUsuario())&&empleado1.getContrasena().equals(empleado.getContrasena())){
-               farmacia.getListaEmpleado().set(auxiliarDeAyuda,empleado);
+                farmacia.getListaEmpleado().set(auxiliarDeAyuda,empleado);
             }
             auxiliarDeAyuda++;
         }
+        iniciarSesionController.setFarmacia(farmacia);
     }
 
    
