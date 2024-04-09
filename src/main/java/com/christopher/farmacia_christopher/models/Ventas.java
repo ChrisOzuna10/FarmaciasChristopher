@@ -4,15 +4,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Ventas {
-    private ArrayList<Producto>listaProductoVenta=new ArrayList<>();
+    private ArrayList<Producto>listaProductoVenta;
     private double totalVenta;
     private LocalDateTime fechaVenta;
     private int idVenta;
     private static int ultimoId = 0;
 
-    public Ventas(ArrayList<Producto> listaProductoVenta) {
+    public Ventas(ArrayList<Producto> listaProductoVenta,double totalVenta) {
         this.listaProductoVenta = listaProductoVenta;
-        this.totalVenta = obtenerTotaldeVenta();
+        this.totalVenta = totalVenta;
         this.fechaVenta =LocalDateTime.now() ;
         this.idVenta=++ultimoId;
     }

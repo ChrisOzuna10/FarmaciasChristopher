@@ -13,9 +13,18 @@ public class Producto {
         return this.cantidad;
     }
 
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+    public double calcularPrecioCantida (){
+        double total;
+        total=this.precio*this.cantidad;
+        return total;
+    }
+
     @Override
     public String toString() {
-        return nombre + " ,Precio: " + precio;
+        return nombre + " ,Precio: " + precio+", cantidad " +cantidad;
     }
 
     public void setNombre(String nombre) {
@@ -45,4 +54,5 @@ public class Producto {
     public int getCantidad() {
         return cantidad;
     }
+
 }

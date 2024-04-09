@@ -15,6 +15,7 @@ public class Farmacia {
         this.listaEmpleado = listaEmpleado;
     }
 
+
     public Inventario getInventario() {
         return inventario;
     }
