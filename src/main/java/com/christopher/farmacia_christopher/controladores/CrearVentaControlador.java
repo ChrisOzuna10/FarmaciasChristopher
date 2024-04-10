@@ -70,14 +70,30 @@ public class CrearVentaControlador {
                 int cantidad = Integer.parseInt(cantidadDeProducto.getText());
 
                 if (cantidad > 0) {
-                    if (!auxListaProductos.contains(productoSeleccionado)) {
-                        productoSeleccionado.setCantidad(cantidad);
-                        auxListaProductos.add(productoSeleccionado);
-                        ListaDeProductosVendidos.getItems().clear();
-                        ListaDeProductosVendidos.getItems().addAll(auxListaProductos);
-                        actualizarTotal();
+                    if (productoSeleccionado.getCantidad() >= cantidad) {
+                        boolean productoYaAgregado = false;
+                        for (Producto producto : auxListaProductos) {
+                            if (producto.getNombre().equals(productoSeleccionado.getNombre())) {
+                                productoYaAgregado = true;
+                                break;
+                            }
+                        }
+
+                        if (!productoYaAgregado) {
+                            productoSeleccionado.restar(cantidad);
+                            Producto productoParaAgregar = new Producto();
+                            productoParaAgregar.setNombre(productoSeleccionado.getNombre());
+                            productoParaAgregar.setPrecio(productoSeleccionado.getPrecio());
+                            productoParaAgregar.setCantidad(cantidad);
+                            auxListaProductos.add(productoParaAgregar);
+                            ListaDeProductosVendidos.getItems().clear();
+                            ListaDeProductosVendidos.getItems().addAll(auxListaProductos);
+                            actualizarTotal();
+                        } else {
+                            System.out.println("El producto ya está en la lista.");
+                        }
                     } else {
-                        System.out.println("El producto ya está en la lista.");
+                        System.out.println("No hay suficientes productos disponibles.");
                     }
                 } else {
                     System.out.println("La cantidad debe ser mayor que cero.");
@@ -145,9 +161,28 @@ public class CrearVentaControlador {
                 System.out.println("La cantidad debe ser mayor que cero.");
                 return;
             }
-            productoSeleccionado.setCantidad(nuevaCantidad);
-            ListaDeProductosVendidos.getItems().set(indiceSeleccionado, productoSeleccionado);
-            actualizarTotal();
+
+            Producto productoInventario = null;
+            for (Producto producto : farmacia.getInventario().getListaProductosInvent()) {
+                if (producto.getNombre().equals(productoSeleccionado.getNombre())) {
+                    productoInventario = producto;
+                    break;
+                }
+            }
+
+            if (productoInventario != null) {
+                int cantidadRestar = nuevaCantidad - productoSeleccionado.getCantidad();
+                if (cantidadRestar <= productoInventario.getCantidad()) {
+                    productoSeleccionado.setCantidad(nuevaCantidad);
+                    ListaDeProductosVendidos.getItems().set(indiceSeleccionado, productoSeleccionado);
+                    actualizarTotal();
+                    productoInventario.restar(cantidadRestar);
+                } else {
+                    System.out.println("No hay suficientes productos disponibles.");
+                }
+            } else {
+                System.out.println("Error: Producto no encontrado en el inventario.");
+            }
         } else {
             System.out.println("Por favor, seleccione un producto para modificar su cantidad.");
         }

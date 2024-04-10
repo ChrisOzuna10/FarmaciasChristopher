@@ -34,12 +34,15 @@ public class InventarioControlador {
 
     @FXML
     private TextField precioDeProducto;
+    @FXML
+    private TextField CantidaddeProductos;
 
     @FXML
     void AgregarBoton(MouseEvent event) {
         Producto producto = new Producto();
         producto.setNombre(nombreDeProducto.getText());
         producto.setPrecio(Double.parseDouble(precioDeProducto.getText()));
+        producto.setCantidad(Integer.parseInt(CantidaddeProductos.getText()));
         farmacia.getInventario().agregarProductosInvent(producto);
         actualizarListaProductos();
     }
@@ -64,7 +67,7 @@ public class InventarioControlador {
     public void actualizarListaProductos() {
         ListaDeProductos.getItems().clear();
         for (Producto producto : farmacia.getInventario().getListaProductosInvent()) {
-            ListaDeProductos.getItems().add(producto.getNombre() + ",Precio: " + producto.getPrecio());
+            ListaDeProductos.getItems().add(producto.getNombre() + ",Precio: $" + producto.getPrecio()+" Cantidad: "+producto.getCantidad());
         }
     }
 
